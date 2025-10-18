@@ -1,0 +1,30 @@
+[build]
+  # Frontend 빌드 설정
+  base = "frontend"
+  publish = "frontend/dist"
+  command = "npm run build"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+# 리다이렉트 설정 (SPA 지원)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# 헤더 설정
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# API 프록시 설정 (Backend 서버로)
+[[redirects]]
+  from = "/api/*"
+  to = "https://your-backend-url.herokuapp.com/api/:splat"
+  status = 200
+  force = true
