@@ -255,6 +255,13 @@ const truncatedContent = readmeContent.substring(0, 3000); // README 길이 제�
 - ✅ GitHub 사용자명 유효성 검사
 - ✅ CORS 설정으로 허용된 도메인만 접근 가능
 
+## 🚀 배포 (Vercel 올인원)
+
+프론트엔드와 백엔드를 **Vercel** 한 곳에서 배포할 수 있습니다.
+
+- 📖 상세 가이드: [VERCEL_DEPLOYMENT.md](./VERCEL_DEPLOYMENT.md)
+- 환경 변수: `GITHUB_TOKEN`, `OPENAI_API_KEY` 설정 필요
+
 ## 💰 비용 최적화
 
 ### GitHub API

@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 // API 기본 설정
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
+// Vercel 배포 시: 상대 경로 /api 사용 (같은 도메인)
+const API_BASE_URL = import.meta.env.VITE_API_URL ?? (import.meta.env.PROD ? '/api' : 'http://localhost:3002/api');
 
 const api = axios.create({
   baseURL: API_BASE_URL,

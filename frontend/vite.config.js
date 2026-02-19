@@ -4,12 +4,13 @@ import react from '@vitejs/plugin-react'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/vibe-1125-acorn-github-api-gpt-api-portfolio/', // GitHub Pages 경로
+  // Vercel: '/' | GitHub Pages: '/vibe-1125-acorn-github-api-gpt-api-portfolio/'
+  base: process.env.VITE_BASE_PATH || '/',
   server: {
-    port: 5173,
+    port: 5159,
     proxy: {
       '/api': {
-        target: 'http://localhost:3001',
+        target: 'http://localhost:3002',
         changeOrigin: true
       }
     }

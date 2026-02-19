@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 // 메모리 기반 방문자 카운터
+// 참고: Vercel 서버리스에서는 인스턴스마다 메모리가 분리되어 카운트가 정확하지 않을 수 있음
 let visitorCount = 0;
 const todayVisitors = new Set();
 let lastResetDate = new Date().toDateString();
