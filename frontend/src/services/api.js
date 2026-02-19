@@ -29,9 +29,13 @@ api.interceptors.response.use(
     return response;
   },
   (error) => {
-    const errorMessage = error.response?.data?.error || error.message || '알 수 없는 오류가 발생했습니다.';
+    let errorMessage = error.response?.data?.error ?? error.message ?? '알 수 없는 오류가 발생했습니다.';
+    // 객체가 전달되면 [object Object] 방지
+    if (typeof errorMessage === 'object') {
+      errorMessage = errorMessage?.message ?? errorMessage?.msg ?? JSON.stringify(errorMessage);
+    }
     console.error('API Error:', errorMessage);
-    return Promise.reject(new Error(errorMessage));
+    return Promise.reject(new Error(String(errorMessage)));
   }
 );
 
